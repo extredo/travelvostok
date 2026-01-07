@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Восток: Религия, Традиции, Права | Образовательная платформа для туристов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #d35400;
+            --accent: #3498db;
+            --light: #f8f9fa;
+            --dark: #1a252f;
+            --success: #27ae60;
+            --gold: #f1c40f;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .logo p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .btn-gold {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+        }
+        
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Courses Section */
+        .courses {
+            padding: 5rem 0;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-price {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .course-features {
+            list-style: none;
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+        
+        .course-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .course-features i {
+            color: var(--success);
+        }
+        
+        .course-footer {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .btn-small {
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
+            width: 100%;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+        
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        .modal h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .header-actions {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div>
+                        <h1>Восток: <span>религия, традиции, права</span></h1>
+                        <p>Образовательная платформа для туристов</p>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html" class="active">Главная</a></li>
+                        <li><a href="#courses">Курсы</a></li>
+                        <li><a href="#how-it-works">Как это работает</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <a href="#courses" class="btn btn-gold">Выбрать курс</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Путешествуйте с уверенностью на Востоке</h2>
+                <p>Узнайте традиции, религию и законы стран Востока перед поездкой. Наша образовательная платформа подготовит вас к безопасному и уважительному путешествию.</p>
+                <a href="#courses" class="btn btn-gold">Выбрать курс</a>
+                <a href="#how-it-works" class="btn btn-outline">Как это работает</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нашу платформу</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Избегайте конфликтов и проблем, зная местные законы и традиции. Ваша безопасность - наш приоритет.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Экспертные знания</h3>
+                    <p>Курсы разработаны экспертами по культуре и религии Востока. Только проверенная информация.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Сертификат</h3>
+                    <p>Получите сертификат об окончании курса, который может помочь при получении визы и во время путешествия.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3>Практические навыки</h3>
+                    <p>Учитесь на реальных ситуациях и кейсах. Знания, которые пригодятся в путешествии.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2 class="section-title">Наши курсы по странам</h2>
+            <p style="text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">Выберите курс по стране, которую планируете посетить. Каждый курс включает глубокое погружение в культуру, религию и правовые нормы.</p>
+            
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Оман: Традиции и законы</h3>
+                        <p>Полное руководство по культуре, религии и законам Султаната Оман для туристов.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> История и традиции Омана</li>
+                            <li><i class="fas fa-check"></i> Исламские нормы и практики</li>
+                            <li><i class="fas fa-check"></i> Законы для туристов</li>
+                            <li><i class="fas fa-check"></i> Этикет и правила поведения</li>
+                        </ul>
+                        
+                        <div class="course-price">7 900 ₽</div>
+                        
+                        <div class="course-footer">
+                            <a href="oman.html" class="btn btn-small">Подробнее о курсе</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Иран: Культура и религия</h3>
+                        <p>Исчерпывающий курс по персидской культуре, шиитскому исламу и иранским законам.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Персидская культура и традиции</li>
+                            <li><i class="fas fa-check"></i> Шиитский ислам в Иране</li>
+                            <li><i class="fas fa-check"></i> Правовые нормы для иностранцев</li>
+                            <li><i class="fas fa-check"></i> Особенности общения с местными</li>
+                        </ul>
+                        
+                        <div class="course-price">8 500 ₽</div>
+                        
+                        <div class="course-footer">
+                            <a href="iran.html" class="btn btn-small">Подробнее о курсе</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1586769852042-1c46b6dd82d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Судан: Обычаи и правила</h3>
+                        <p>Курс по культуре, исламским нормам и законодательству Судана для путешественников.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Культура и традиции Судана</li>
+                            <li><i class="fas fa-check"></i> Местные обычаи и табу</li>
+                            <li><i class="fas fa-check"></i> Законы и правила поведения</li>
+                            <li><i class="fas fa-check"></i> Безопасность в путешествии</li>
+                        </ul>
+                        
+                        <div class="course-price">6 900 ₽</div>
+                        
+                        <div class="course-footer">
+                            <a href="sudan.html" class="btn btn-small">Подробнее о курсе</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="course-content">
+                        <h3>Йемен: Традиции и безопасность</h3>
+                        <p>Комплексный курс по культуре, исламским нормам и правилам безопасности в Йемене.</p>
+                        
+                        <ul class="course-features">
+                            <li><i class="fas fa-check"></i> Культура и история Йемена</li>
+                            <li><i class="fas fa-check"></i> Местные обычаи и традиции</li>
+                            <li><i class="fas fa-check"></i> Правила безопасности для туристов</li>
+                            <li><i class="fas fa-check"></i> Особенности региональных различий</li>
+                        </ul>
+                        
+                        <div class="course-price">7 500 ₽</div>
+                        
+                        <div class="course-footer">
+                            <a href="yemen.html" class="btn btn-small">Подробнее о курсе</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как работает наша платформа</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выберите курс</h3>
+                    <p>Подберите курс по стране, которую планируете посетить.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Пройдите обучение</h3>
+                    <p>Изучайте материалы в удобном темпе. Видеоуроки, тексты, тесты и практические задания.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Сдайте экзамен</h3>
+                    <p>Пройдите итоговое тестирование, чтобы подтвердить полученные знания.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Получите сертификат</h3>
+                    <p>Получите сертификат об окончании курса, который повысит ваш статус как подготовленного туриста.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Начните свое путешествие с уверенностью</h2>
+            <p>Присоединяйтесь к тысячам путешественников, которые уже прошли наши курсы и путешествуют по Востоку безопасно и с уважением к местным культурам.</p>
+            <a href="#courses" class="btn btn-gold">Выбрать курс сейчас</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О платформе</h3>
+                    <p>"Восток: религия, традиции, права" - образовательная платформа для туристов, направляющихся в страны Востока. Мы помогаем путешественникам понять местные культуры, религии и законы для безопасного и уважительного путешествия.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Курсы</h3>
+                    <ul>
+                        <li><a href="oman.html">Оман: Традиции и законы</a></li>
+                        <li><a href="iran.html">Иран: Культура и религия</a></li>
+                        <li><a href="sudan.html">Судан: Обычаи и правила</a></li>
+                        <li><a href="yemen.html">Йемен: Традиции и безопасность</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><strong>Email</strong></p>
+                            <p>info@vostok-platform.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p><strong>Телефон</strong></p>
+                            <p>+7 (495) 123-45-67</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p><strong>Время работы</strong></p>
+                            <p>Пн-Пт: 10:00-19:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Образовательная платформа «Восток: религия, традиции, права». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h3 id="modalTitle">Оформление заказа</h3>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="courseName">Выбранный курс:</label>
+                    <input type="text" id="courseName" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="coursePrice">Стоимость:</label>
+                    <input type="text" id="coursePrice" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Ваше имя *</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email *</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="userPhone">Телефон *</label>
+                    <input type="tel" id="userPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Способ оплаты</label>
+                    <select id="paymentMethod">
+                        <option value="card">Банковская карта</option>
+                        <option value="sbp">СБП (Система быстрых платежей)</option>
+                        <option value="invoice">Выставить счет</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Оформить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const nav = document.getElementById('mainNav');
+            nav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.getElementById('mainNav');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Modal functionality
+        const bookingModal = document.getElementById('bookingModal');
+        const closeModal = document.getElementById('closeModal');
+        const bookingForm = document.getElementById('bookingForm');
+        
+        function openBookingModal(courseName, coursePrice) {
+            document.getElementById('modalTitle').textContent = `Оформление заказа: ${courseName}`;
+            document.getElementById('courseName').value = courseName;
+            document.getElementById('coursePrice').value = `${coursePrice.toLocaleString('ru-RU')} ₽`;
+            bookingModal.style.display = 'flex';
+        }
+        
+        closeModal.addEventListener('click', () => {
+            bookingModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === bookingModal) {
+                bookingModal.style.display = 'none';
+            }
+        });
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Спасибо за заказ! Мы свяжемся с вами в ближайшее время для подтверждения.');
+            bookingModal.style.display = 'none';
+            bookingForm.reset();
+        });
+
+        // Highlight active nav link
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
